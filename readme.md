@@ -87,7 +87,6 @@ We welcome ideas, feedback, and contributions! If you're interested in shaping t
 
 ## 🔗 Stay Connected
 
-- **Project Lead**: Reach out to [Sumandeep Grewal]
-- **GitHub Repository**: *(Coming Soon)*
+- **Project Lead**: Sumandeep Grewal
 
 Join us on this exciting journey to **turn experiences into wisdom**. 🌱
