@@ -87,6 +87,6 @@ We welcome ideas, feedback, and contributions! If you're interested in shaping t
 
 ## 🔗 Stay Connected
 
-- **Project Lead**: Sumandeep Grewal
+- **Project Members**: Sumandeep Grewal, Chandan and Srijan Singh
 
 Join us on this exciting journey to **turn experiences into wisdom**. 🌱
