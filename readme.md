@@ -77,7 +77,7 @@ We welcome ideas, feedback, and contributions! If you're interested in shaping t
 
 ## 📅 Roadmap
 
-1. **Phase 1**: Research and ideation (In Progress)
+1. **Phase 1**: Research and ideation
 2. **Phase 2**: Finalize tech stack and architecture
 3. **Phase 3**: Develop MVP with generative AI capabilities
 4. **Phase 4**: Launch beta testing and gather user feedback
