@@ -40,7 +40,7 @@ const Navbar = () => {
             after:w-0 after:h-[2px] after:bg-teal-500 after:transition-all 
             after:duration-300 hover:after:w-full"
           >
-            About
+            Insights
           </a>
           <a
             href="#"
@@ -50,7 +50,7 @@ const Navbar = () => {
             after:w-0 after:h-[2px] after:bg-teal-500 after:transition-all 
             after:duration-300 hover:after:w-full"
           >
-            Team Viscora
+            IntelliBot 🤖
           </a>
         </div>
 
@@ -84,10 +84,10 @@ const Navbar = () => {
               Home
             </a>
             <a href="#" className="text-lg font-semibold text-gray-300 hover:text-teal-400 transition-colors duration-300">
-              About
+              Insights
             </a>
             <a href="#" className="text-lg font-semibold text-gray-300 hover:text-teal-400 transition-colors duration-300">
-              Team Viscora
+              IntelliBot 🤖 
             </a>
           </div>
         </div>
