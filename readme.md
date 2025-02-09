@@ -35,8 +35,8 @@ Viscora isn't just about keeping track of what happened—it's about helping you
 
 While the full tech stack is still being finalized, here’s the starting point:
 - **Generative AI APIs**: Exploring OpenAI's ChatGPT API or Google's Gemini AI.
-- **Frontend Framework**: Angular, React, or Flutter (to be decided).
-- **Backend Framework**: Node.js or Django (under consideration).
+- **Frontend Framework**  React
+- **Backend Framework**: Node.js, express.js
 - **Database**: To be determined based on scalability and security needs.
 - **Hosting**: Likely using a VPS for 24/7 availability.
 
