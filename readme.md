@@ -90,3 +90,28 @@ We welcome ideas, feedback, and contributions! If you're interested in shaping t
 - **Project Members**: Sumandeep Grewal, Chandan and Srijan Singh
 
 Join us on this exciting journey to **turn experiences into wisdom**. 🌱
+
+
+## 🛠️ Steps to Run the Project completed till now
+- Open repository in your desired integrated development environment like VS Code and open terminal for running following commands :>
+- **Step 1**: Install all dependencies with `npm install`.
+- **Step 2**: Run the development server with `npm run dev`.
+
+## 📃 References / Video tutorial for tech stack used in this project:
+
+- Whole course was helpful: [YouTube Playlist](https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&si=FHqmDrdmDsBXuT5N)
+
+Especially:
+- [React project Tutorial using vite (Video)](https://www.youtube.com/watch?v=sgNZcK8QIyc&list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&index=131)
+- For Tailwind CSS: [Tailwind CSS Crash Course](https://youtu.be/-g969furGik?si=pMZfqLr_Ts7ozsxY)  
+  A bit of change in syntax can be checked from the updated documentation at the [Tailwind CSS website](https://tailwindcss.com/docs).
+- For MongoDB: [MongoDB Tutorial](https://youtu.be/wgwo5hbY7SY)
+- Special thanks to [@codewithharry](https://www.youtube.com/c/CodeWithHarry)
+
+Also, a video from freeCodeCamp revising particularly MERN stack without Vite:
+- [MERN Stack (Without Vite) Video](https://www.youtube.com/watch?v=O3BUHwfHf84)
+
+- Used NPM documentation and resources like chatGPT for various errors and corrections :>
+
+## 📜 Documented and Majorly Coded by :
+[@SrijanSingh9](https://github.com/SrijanSingh9)
