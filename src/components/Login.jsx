@@ -1,7 +1,7 @@
 import React from "react";
 
 const Login = () => {
-  // Placeholder functions for handling login (replace with real auth logic)
+  // Placeholder functions for handling login (in future it would be replaced with real auth logic)
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In Clicked!");
     // Add Google Sign-In logic here
