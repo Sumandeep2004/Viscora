@@ -1,4 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { toast, ToastContainer, Bounce } from "react-toastify"; // ✅ Added Bounce import
+import "react-toastify/dist/ReactToastify.css";
+
+
+const notify = () => {
+  toast("Reflection saved successfully! ✔️ ", {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    style: {
+      background: "#020617", // Dark navy background
+      color: "#14b8a6", // Teal text
+      border: "1px solid #14b8a6", // Teal border
+      fontSize: "16px",
+      boxShadow: "0 0 15px rgba(20, 184, 166, 0.5)", // Soft teal glow
+    },
+    progressStyle: {
+      background: "#14b8a6", // Teal progress bar
+    },
+  });
+};
 
 const Manager = () => {
   const [date, setDate] = useState("");
@@ -13,6 +40,7 @@ const Manager = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Data:", { date, mood, entry, message });
+    notify(); // Show the toast notification
   };
 
   return (
@@ -138,6 +166,7 @@ const Manager = () => {
             </button>
           </div>
         </form>
+        <ToastContainer />
       </main>
     </div>
   );
