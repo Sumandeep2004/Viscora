@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast, ToastContainer, Bounce } from "react-toastify"; // ✅ Added Bounce import
+import { toast, ToastContainer, Bounce } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -15,14 +15,14 @@ const notify = () => {
     theme: "dark",
     transition: Bounce,
     style: {
-      background: "#020617", // Dark navy background
-      color: "#14b8a6", // Teal text
-      border: "1px solid #14b8a6", // Teal border
+      background: "#020617", 
+      color: "#14b8a6", 
+      border: "1px solid #14b8a6", 
       fontSize: "16px",
-      boxShadow: "0 0 15px rgba(20, 184, 166, 0.5)", // Soft teal glow
+      boxShadow: "0 0 15px rgba(20, 184, 166, 0.5)", 
     },
     progressStyle: {
-      background: "#14b8a6", // Teal progress bar
+      background: "#14b8a6", 
     },
   });
 };
