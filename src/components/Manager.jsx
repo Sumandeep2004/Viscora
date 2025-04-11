@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const notify = () => {
   toast("Reflection saved successfully! ✔️ ", {
@@ -93,7 +93,9 @@ const Manager = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-teal-400 text-sm font-medium">Date</label>
+              <label className="block text-teal-400 text-sm font-medium">
+                Date
+              </label>
               <input
                 type="date"
                 value={date}
@@ -102,7 +104,9 @@ const Manager = () => {
               />
             </div>
             <div>
-              <label className="block text-teal-400 text-sm font-medium">Current Mood</label>
+              <label className="block text-teal-400 text-sm font-medium">
+                Current Mood
+              </label>
               <select
                 value={mood}
                 onChange={(e) => setMood(e.target.value)}
@@ -114,10 +118,16 @@ const Manager = () => {
                 <option value="😠 Angry">😠 Angry</option>
                 <option value="😌 Calm">😌 Calm</option>
                 <option value="😕 Confused">😕 Confused</option>
+                <option value="😩 Frustrated">😩 Frustrated</option>
+                <option value="😴 Exhausted">😴 Exhausted</option>
+                <option value="😐 Normal">😐 Normal</option>
               </select>
             </div>
+
             <div>
-              <label className="block text-teal-400 text-sm font-medium">Reflection Entry</label>
+              <label className="block text-teal-400 text-sm font-medium">
+                Reflection Entry
+              </label>
               <textarea
                 value={entry}
                 onChange={(e) => setEntry(e.target.value)}
@@ -127,7 +137,9 @@ const Manager = () => {
               />
             </div>
             <div>
-              <label className="block text-teal-400 text-sm font-medium">Message to Self</label>
+              <label className="block text-teal-400 text-sm font-medium">
+                Message to Self
+              </label>
               <input
                 type="text"
                 value={message}
