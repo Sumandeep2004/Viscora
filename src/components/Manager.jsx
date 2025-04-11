@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { toast, ToastContainer, Bounce } from "react-toastify"; 
+import { toast, ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { v4 as uuidv4 } from 'uuid';
 
 const notify = () => {
   toast("Reflection saved successfully! ✔️ ", {
@@ -15,14 +15,14 @@ const notify = () => {
     theme: "dark",
     transition: Bounce,
     style: {
-      background: "#020617", 
-      color: "#14b8a6", 
-      border: "1px solid #14b8a6", 
+      background: "#020617",
+      color: "#14b8a6",
+      border: "1px solid #14b8a6",
       fontSize: "16px",
-      boxShadow: "0 0 15px rgba(20, 184, 166, 0.5)", 
+      boxShadow: "0 0 15px rgba(20, 184, 166, 0.5)",
     },
     progressStyle: {
-      background: "#14b8a6", 
+      background: "#14b8a6",
     },
   });
 };
@@ -32,141 +32,146 @@ const Manager = () => {
   const [mood, setMood] = useState("");
   const [entry, setEntry] = useState("");
   const [message, setMessage] = useState("");
+  const [reflections, setReflections] = useState([]);
 
   useEffect(() => {
     setDate(new Date().toISOString().split("T")[0]);
+    const savedReflections = localStorage.getItem("reflections");
+    if (savedReflections) {
+      setReflections(JSON.parse(savedReflections));
+    }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", { date, mood, entry, message });
-    notify(); // Show the toast notification
+
+    if (!date || !mood || !entry || !message) {
+      toast.error("Please fill all fields!");
+      return;
+    }
+
+    const newReflection = {
+      id: uuidv4(),
+      date,
+      mood,
+      entry,
+      message,
+    };
+
+    const updatedReflections = [...reflections, newReflection];
+    setReflections(updatedReflections);
+    localStorage.setItem("reflections", JSON.stringify(updatedReflections));
+
+    notify(); // Show the toast
+    setMood("");
+    setEntry("");
+    setMessage("");
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] overflow-hidden relative">
-      {/* Enhanced Background Styling */}
+    <div className="min-h-screen bg-black overflow-hidden relative text-white">
+      <ToastContainer />
       <div className="absolute inset-0 z-0 bg-[radial-gradient(#22d3ee22_1px,#000a1f_1px)] bg-[size:24px_24px] opacity-90">
         <div className="absolute inset-0 bg-[radial-gradient(circle_700px_at_50%_20%,#0f6e8220,#000000)]" />
       </div>
 
-      <main className="relative z-10 min-h-screen flex flex-col items-center px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        {/* Header Section */}
+      <main className="relative z-10 min-h-screen flex flex-col items-center px-4 pt-16 pb-12">
         <header className="w-full max-w-3xl flex flex-col items-center space-y-6 mb-12">
           <img
             src="src/assets/viscora.svg"
             alt="Viscora Logo"
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover 
-                       transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#14b8a688]"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_#14b8a688]"
           />
           <h1 className="text-teal-300 text-2xl sm:text-3xl font-light tracking-wide">
             Your Daily Reflection
           </h1>
         </header>
 
-        {/* Form Section */}
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-3xl bg-[#020617]/95 backdrop-blur-2xl rounded-2xl 
-                     border border-teal-900/40 shadow-[0_10px_40px_rgba(20,184,166,0.1)] 
-                     p-6 sm:p-8 transition-all duration-300 hover:shadow-[0_10px_50px_rgba(20,184,166,0.15)]"
+          className="w-full max-w-3xl bg-[#020617]/95 backdrop-blur-2xl rounded-2xl border border-teal-900/40 shadow-lg p-6 sm:p-8"
         >
-          <div className="space-y-8">
-            {/* Date Input */}
-            <div className="space-y-2">
-              <label className="block text-teal-400 text-sm font-medium tracking-wide">
-                Date
-              </label>
+          <div className="space-y-6">
+            <div>
+              <label className="block text-teal-400 text-sm font-medium">Date</label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 
-                          rounded-lg px-4 py-3 transition-all duration-200 
-                          focus:outline-none focus:border-teal-600 focus:ring-2 
-                          focus:ring-teal-500/20 hover:border-teal-700/60"
+                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 rounded-lg px-4 py-3"
               />
             </div>
-
-            {/* Mood Selection */}
-            <div className="space-y-2">
-              <label className="block text-teal-400 text-sm font-medium tracking-wide">
-                Current Mood
-              </label>
+            <div>
+              <label className="block text-teal-400 text-sm font-medium">Current Mood</label>
               <select
                 value={mood}
                 onChange={(e) => setMood(e.target.value)}
-                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 
-                          rounded-lg px-4 py-3 transition-all duration-200 
-                          focus:outline-none focus:border-teal-600 focus:ring-2 
-                          focus:ring-teal-500/20 hover:border-teal-700/60 appearance-none"
+                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 rounded-lg px-4 py-3"
               >
-                <option value="">Select your mood</option>
-                <option>Happy 😊</option>
-                <option>Sad 😢</option>
-                <option>Excited 🎉</option>
-                <option>Angry 😠</option>
-                <option>Relaxed 😌</option>
-                <option>Motivated 💪</option>
-                <option>Stressed 😖</option>
-                <option>Neutral 🥱</option>
+                <option value="">Select mood</option>
+                <option value="😊 Happy">😊 Happy</option>
+                <option value="😔 Sad">😔 Sad</option>
+                <option value="😠 Angry">😠 Angry</option>
+                <option value="😌 Calm">😌 Calm</option>
+                <option value="😕 Confused">😕 Confused</option>
               </select>
             </div>
-
-            {/* Diary Entry */}
-            <div className="space-y-2">
-              <label className="block text-teal-400 text-sm font-medium tracking-wide">
-                Diary Entry
-              </label>
+            <div>
+              <label className="block text-teal-400 text-sm font-medium">Reflection Entry</label>
               <textarea
                 value={entry}
                 onChange={(e) => setEntry(e.target.value)}
-                rows="6"
-                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 
-                          rounded-lg px-4 py-3 transition-all duration-200 
-                          focus:outline-none focus:border-teal-600 focus:ring-2 
-                          focus:ring-teal-500/20 hover:border-teal-700/60 resize-y"
-                placeholder="Reflect on your day..."
-              ></textarea>
+                rows={4}
+                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 rounded-lg px-4 py-3"
+                placeholder="Write your thoughts..."
+              />
             </div>
-
-            {/* Message to Self */}
-            <div className="space-y-2">
-              <label className="block text-teal-400 text-sm font-medium tracking-wide">
-                Today's Message to Yourself
-              </label>
+            <div>
+              <label className="block text-teal-400 text-sm font-medium">Message to Self</label>
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 
-                          rounded-lg px-4 py-3 transition-all duration-200 
-                          focus:outline-none focus:border-teal-600 focus:ring-2 
-                          focus:ring-teal-500/20 hover:border-teal-700/60"
-                placeholder="A kind word for yourself..."
+                className="w-full bg-[#0f172a]/80 text-teal-200 border border-teal-800/40 rounded-lg px-4 py-3"
               />
             </div>
-
-            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full relative group overflow-hidden rounded-xl 
-                        bg-teal-900/20 border border-teal-800/40 py-3 px-6 
-                        transition-all duration-300 hover:bg-teal-900/30 
-                        hover:border-teal-600/60 focus:outline-none 
-                        focus:ring-2 focus:ring-teal-500/40"
+              className="mt-4 bg-teal-600 hover:bg-teal-500 text-white font-medium py-2 px-6 rounded-lg transition"
             >
-              <div
-                className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,#0f172a_0%,#14b8a6_50%,#0f172a_100%)] 
-                          opacity-0 group-hover:opacity-20 transition-opacity duration-300 animate-spin-slow"
-              />
-              <span className="relative text-teal-300 font-medium tracking-wide">
-                Save Reflection
-              </span>
+              Save Reflection
             </button>
           </div>
         </form>
-        <ToastContainer />
+
+        {/* Display Saved Reflections */}
+        <div className="w-full max-w-4xl mt-10">
+          <h2 className="text-xl text-teal-400 mb-4">Saved Reflections</h2>
+          {reflections.length === 0 ? (
+            <p className="text-gray-400">No reflections saved yet.</p>
+          ) : (
+            <table className="w-full border-collapse text-left">
+              <thead>
+                <tr className="text-teal-500 border-b border-teal-700">
+                  <th className="py-2 px-4">Date</th>
+                  <th className="py-2 px-4">Mood</th>
+                  <th className="py-2 px-4">Entry</th>
+                  <th className="py-2 px-4">Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reflections.map((r) => (
+                  <tr key={r.id} className="border-b border-teal-800">
+                    <td className="py-2 px-4">{r.date}</td>
+                    <td className="py-2 px-4">{r.mood}</td>
+                    <td className="py-2 px-4">{r.entry}</td>
+                    <td className="py-2 px-4">{r.message}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       </main>
     </div>
   );
