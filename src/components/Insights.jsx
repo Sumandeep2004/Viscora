@@ -61,7 +61,7 @@ Keep the tone magical related to future advise with polite tone, reflective, and
     const fetchAIInsight = async () => {
       try {
         const response = await axios.post(
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAGgB0TYEpdeK8mt5XGZJgbUp_sQATBMD4",
+          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyAGgB0TYEpdeK8mt5XGZJgbUp_sQATBMD4",
           {
             contents: [
               {
